@@ -1,0 +1,10 @@
+
+$text1:#fdfdfd99;
+$bg1:rgb(2, 5, 24);
+$bg2:rgb(2, 21, 41);
+
+@mixin flex {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
