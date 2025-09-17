@@ -27,15 +27,31 @@ function Home() {
 ]
   let projectClick ;
   const project = (id) => {
-    const activeProject =projects.find(item => item.id ===id)
-    console.log(activeProject)
     localStorage.setItem('projectId', id)
     console.log(id)
-    
-
+    const activeProject =projects.find(item => item.id ===id)
+    console.log(activeProject)
+    if(activeProject){
       projectClick= <>
+     <div>
+      <AiOutlineClose/>
+      <a href="https://shelta.onrender.com/">
+        <img src="src\assets\shelta.png" alt="" />
+       </a>{" "}
+       <p>{activeProject.project}</p>
+       <p>
+        Shelta is a web app built to help users rent apartments
+        online with ease and connect agents, landlords an d tenants
+       from their comfort zones. <br /> <br />
+        Technologies used: Javascript, React.js, SASS for styling,
+        Git & Github for version control, deployed on render
+       </p>
+     </div>
      </>
-         console.log(projectClick)
+              console.log(projectClick)
+
+    }
+
 
     // if(localStorage.getItem('project1')){
     //    projectDisplay = <div>
@@ -169,20 +185,7 @@ function Home() {
           <h1>My projects</h1>
           <div className="project">
           <div className="shape"></div>
-          {localStorage.getItem('project')?<div>
-      <AiOutlineClose onClick={project} />
-      <a href="https://shelta.onrender.com/">
-        <img src="src\assets\shelta.png" alt="" />
-       </a>{" "}
-       <p>{JSON.parse(localStorage.getItem('project')).project }</p>
-       <p>
-        Shelta is a web app built to help users rent apartments
-        online with ease and connect agents, landlords an d tenants
-       from their comfort zones. <br /> <br />
-        Technologies used: Javascript, React.js, SASS for styling,
-        Git & Github for version control, deployed on render
-       </p>
-     </div> :null}
+          <div>{projectClick}</div>
           <div className="projectList">
               { projects.map(item =>(
               <p data-id={item.id} key={item.id} onClick={() =>project (item.id)}>{item.project}</p>
