@@ -142,7 +142,7 @@ header {
         p {
             font-size: 14px;
             line-height: 25px;
-            width: 80%;
+            width: 90%;
             border-left: 2px solid;
             padding-left: 10px;
             margin: auto;
@@ -253,7 +253,7 @@ header {
     }
 
     :nth-child(2) {
-        width: 80%;
+        width: 90%;
         margin: auto;
 
         h1 {
@@ -292,7 +292,8 @@ header {
                     width: max-content;
                     border-bottom: 4px solid;
                     margin-left: 20px;
-                    // padding-left: 15px;
+                    font-size: 16px;
+                    cursor: pointer;
                     border-image-slice: 1;
                     border-image-source: linear-gradient(to right, #D1DC09, #743ad5, #daa520);
                 }
@@ -303,7 +304,7 @@ header {
                 display: flex;
                 flex-direction: column;
                 justify-content: left;
-                width: 100%;
+                width: 80%;
                 margin-top: 10px;
 
                 a {

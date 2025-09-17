@@ -23,6 +23,10 @@ function Home() {
 ]
 // localStorage.removeItem('activeProject')
 const [activeItems, setActiveItems] = useState(0);
+if(localStorage.getItem('activeProject')
+){null}
+else{localStorage.setItem('activeProject', JSON.stringify(projects[0]))
+}
   const project = (id) => {
     if(JSON.parse(localStorage.getItem('activeProject')).id ===id){
       setHoverProject(!hoverProject)
