@@ -108,7 +108,7 @@ localStorage.setItem('projects', JSON.stringify(projects))
             <div className="itemDisplay" style={hoverProject? {display:'block'} : {display:'none'}} >
             <AiOutlineClose onClick={closeIcon}/>
             <a href={atvProjectDisplay.link}>
-              <img src={'src/'+atvProjectDisplay.Image} alt={atvProjectDisplay.project} />
+              <img src={atvProjectDisplay.Image} alt={atvProjectDisplay.project} />
              </a>{" "}
              <p>{atvProjectDisplay.project}</p>
              <p>
