@@ -1,14 +1,6 @@
 import React, { useState,useEffect } from "react";
 import "./styles/index.scss";
 import { BiCross, BiHeart } from "react-icons/bi";
-import multiFormImage from "./assets/multi-form.png";
-import colorGame from "./assets/color-game.png";
-import productDetails from "./assets/product-details.png";
-import pronet from "./assets/pronet.png";
-import taskpad from "./assets/taskpad image.png";
-import ticketGenerator from "./assets/ticket-generator.png";
-import trivia from "./assets/trivia.png";
-
 import {
   BsFacebook,
   BsFillEmojiNeutralFill,
@@ -24,12 +16,12 @@ function Home() {
   const [hoverProject, setHoverProject] = useState(false);
  // project()
  const projects =[
-  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:taskpad, id:1, description:"this is a to do app", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:multiFormImage, id:2, description:"This is a multi step form", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:trivia, id:3, description:"This is a Quiz app",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
-  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:pronet,  id:4, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:ticketGenerator,  id:5, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:colorGame,  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'}
+  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"this is a to do app", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"/multi-form.png", id:2, description:"This is a multi step form", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"/trivia.png", id:3, description:"This is a Quiz app",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
+  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"/pronet.png",  id:4, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:"/ticket-generator.png",  id:5, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"/color-game.png",  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'}
 ]
 // localStorage.removeItem('activeProject')
 const [activeItems, setActiveItems] = useState(0);
