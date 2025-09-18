@@ -17,7 +17,7 @@ function Home() {
   const [hoverProject, setHoverProject] = useState(false);
  // project lists
  const projects =[
-  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"A simple, intuitive, and efficient to-do app designed to help you stay organized and productive every day.", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
   {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"/multi-form.png", id:2, description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
   {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"/trivia.png", id:3, description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
   {project: 'Product page',link:'https://halima-1.github.io/web3Bridge_product_details/', Image:"/product-details.png",  id:4, description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.", technology:'React.js, SAAS, Git and github, deployed on Render'},
@@ -114,8 +114,8 @@ localStorage.setItem('projects', JSON.stringify(projects))
              <p>
               {atvProjectDisplay.description}
              </p>
-             <p>
-              {'Technology used: ' +atvProjectDisplay.technology}
+             <p><b>Technology used: </b> 
+              {' '+ atvProjectDisplay.technology}
              </p>
            </div>
             </> :null
