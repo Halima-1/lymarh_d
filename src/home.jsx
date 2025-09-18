@@ -17,13 +17,13 @@ function Home() {
   const [hoverProject, setHoverProject] = useState(false);
  // project lists
  const projects =[
-  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"this is a to do app", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"/multi-form.png", id:2, description:"This is a multi step form", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"/trivia.png", id:3, description:"This is a Quiz app",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
-  {project: 'Product page',link:'https://halima-1.github.io/web3Bridge_product_details/', Image:"/product-details.png",  id:4, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"/pronet.png",  id:5, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"/multi-form.png", id:2, description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"/trivia.png", id:3, description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
+  {project: 'Product page',link:'https://halima-1.github.io/web3Bridge_product_details/', Image:"/product-details.png",  id:4, description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"/pronet.png",  id:5, description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.", technology:'React.js, SAAS, Git and github, deployed on Render'},
   {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:"/tickhttps://halima-1.github.io/web3Bridge_product_details/et-generator.png",  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"/color-game.png",  id:7, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'}
+  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"/color-game.png",  id:7, description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", technology:'React.js, SAAS, Git and github, deployed on Render'}
 ]
 // localStorage.removeItem('activeProject')
 // setting a clicked project to local storage to display it details
