@@ -131,7 +131,7 @@ localStorage.setItem('projects', JSON.stringify(projects))
           </div>
         </section>
       </section>
-      <footer>
+      {/* <footer>
         <nav></nav>
         <div>
         <h1>
@@ -143,7 +143,7 @@ localStorage.setItem('projects', JSON.stringify(projects))
 
           </h1>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
