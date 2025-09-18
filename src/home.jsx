@@ -16,12 +16,12 @@ function Home() {
   const [hoverProject, setHoverProject] = useState(false);
  // project()
  const projects =[
-  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"assets/taskpad image.png", id:1, description:"this is a to do app", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"assets/multi-form.png", id:2, description:"This is a multi step form", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"assets/trivia.png", id:3, description:"This is a Quiz app",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
-  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"assets/pronet.png",  id:4, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:"assets/ticket-generator.png",  id:5, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"assets/color-game.png",  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'}
+  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"./assetstaskpad image.png", id:1, description:"this is a to do app", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"./assets/multi-form.png", id:2, description:"This is a multi step form", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
+  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"./assets/trivia.png", id:3, description:"This is a Quiz app",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
+  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"./assets/pronet.png",  id:4, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:"./assets/ticket-generator.png",  id:5, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
+  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"./assets/color-game.png",  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'}
 ]
 // localStorage.removeItem('activeProject')
 const [activeItems, setActiveItems] = useState(0);
