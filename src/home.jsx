@@ -5,7 +5,7 @@ import multiFormImage from "./assets/multi-form.png";
 import colorGame from "./assets/color-game.png";
 import productDetails from "./assets/product-details.png";
 import pronet from "./assets/pronet.png";
-import taskpad from "./assets/taskpad.png";
+import taskpad from "./assets/taskpad image.png";
 import ticketGenerator from "./assets/ticket-generator.png";
 import trivia from "./assets/trivia.png";
 
