@@ -141,7 +141,7 @@ header {
     }
 
     .intro {
-        width: 90%;
+        width: 100%;
         margin: auto;
 
         h1 {
@@ -160,7 +160,7 @@ header {
             border-left: 2px solid;
             padding-left: 10px;
             margin: auto;
-
+            text-align: justify;
             border-image-slice: 1;
             border-image-source: linear-gradient(to bottom, #D1DC09, #743ad5, #daa520);
 
@@ -267,8 +267,9 @@ header {
     }
 
     :nth-child(2) {
-        width: 90%;
+        width: 100%;
         margin: auto;
+        margin-top: 20px;
 
         h1 {
             font-size: 1.5rem;
@@ -278,12 +279,14 @@ header {
         }
 
         .shape {
-            width: 100%;
+            width: 90%;
             height: 70px;
             padding: 5px 0 0 25px;
             border-top: 5px solid;
             border-left: 5px solid;
             border-image-slice: 1;
+            margin-top: 15px;
+            margin: auto;
             border-image-source: linear-gradient(to right bottom, #D1DC09, #743ad5, #daa520);
         }
 
@@ -300,6 +303,7 @@ header {
                 width: 80%;
                 // position: absolute;
                 top: 20px;
+                margin: auto;
 
                 p {
                     margin-top: 15px;
