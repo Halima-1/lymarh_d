@@ -17,13 +17,41 @@ function Home() {
   const [hoverProject, setHoverProject] = useState(false);
  // project lists
  const projects =[
-  {project: 'Task pad', link:'https://lymarh-taskpad.netlify.app/', Image:"/taskpad image.png", id:1, description:"A simple, intuitive, and efficient to-do app designed to help you stay organized and productive every day.", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Multi step form',link:'https://multii-form.netlify.app/', Image:"/multi-form.png", id:2, description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", technology:'React.js, SAAS, Git and github, deployed on Netlify'},
-  {project: 'Quiz app',link:'https://trivia-twist.netlify.app/', Image:"/trivia.png", id:3, description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",technology:'HTML5, CSS3, Git and github, deployed on Netlify'},
-  {project: 'Product page',link:'https://halima-1.github.io/web3Bridge_product_details/', Image:"/product-details.png",  id:4, description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'ProNet',link:'https://pro-net.onrender.com/', Image:"/pronet.png",  id:5, description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Ticket generator',link:'https://ticket-generator-5aug.onrender.com/', Image:"/tickhttps://halima-1.github.io/web3Bridge_product_details/et-generator.png",  id:6, description:"This is a linkedIn clone", technology:'React.js, SAAS, Git and github, deployed on Render'},
-  {project: 'Color game',link:'https://colorgame-05k0.onrender.com', Image:"/color-game.png",  id:7, description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", technology:'React.js, SAAS, Git and github, deployed on Render'}
+  {project: 'Task pad', demo:'https://lymarh-taskpad.netlify.app/', repo:'' ,
+  Image:"/taskpad image.png", id:1, 
+  description:"A simple, intuitive, and efficient to-do app designed to help you stay organized and productive every day.",
+  technology:['React.js','SASS','Git & github','Netlify']},
+  {project: 'Multi step form',
+  demo:'https://multii-form.netlify.app/', repo:'' ,
+  Image:"/multi-form.png", 
+  id:2, 
+  description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", 
+  technology:['React.js','SASS','Git & github','Netlify']},
+  {project: 'Quiz app',
+  demo:'https://trivia-twist.netlify.app/',repo:'' ,
+   Image:"/trivia.png", id:3, 
+   description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",
+   technology:['HTML5','CSS3', 'Git & github', 'Netlify']},
+  {project: 'Product page',
+  demo:'https://halima-1.github.io/web3Bridge_product_details/', repo:'' ,
+  Image:"/product-details.png",  id:4, 
+  description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.",
+  technology:['React.js','SASS','Git & github','Github']},
+  {project: 'ProNet',
+  demo:'https://pro-net.onrender.com/', repo:'' ,
+  Image:"/pronet.png",  id:5, 
+  description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.",
+  technology:['React.js','SASS','Git & github','Render']},
+  {project: 'Ticket generator',
+  demo:'https://ticket-generator-5aug.onrender.com/',repo:'' , 
+  Image:"/ticket-generator.png",  
+  id:6, description:"This is a linkedIn clone", 
+  technology:['React.js','SASS','Git & github','Render']},
+  {project: 'Color game',
+  demo:'https://colorgame-05k0.onrender.com', repo:'' ,
+  Image:"/color-game.png",  id:7,
+  description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", 
+  technology:['React.js','SASS','Git & github','Render']}
 ]
 // localStorage.removeItem('activeProject')
 // setting a clicked project to local storage to display it details
@@ -81,14 +109,13 @@ localStorage.setItem('projects', JSON.stringify(projects))
       </header>
       <section className="main">
         <section className="intro">
-          <h1>Welcome!</h1>
+          {/* <h1>Welcome!</h1> */}
           <p>
             Hi, I am  Halima Dahunsi, Frontend Developer skilled in JavaScript, React,
              and modern CSS frameworks. I specialize in building responsive websites, 
             dynamic interfaces, and interactive applications that bring ideas to life.
             For me, frontend development is more than code — it’s about creating meaningful
-             digital experiences. I design and build websites that
-             not only look great but also solve real problems for users and businesses.
+             digital experiences.
              Looking for someone who can turn designs into real, working products? I’d love to help.
             </p>
           <a
@@ -99,36 +126,34 @@ localStorage.setItem('projects', JSON.stringify(projects))
             RESUME
           </a>
         </section>
-        <section>
+        <section className="project-display">
           <h1>My recent projects</h1>
-          <div className="project">
-          <div className="shape"></div>
-          {
-            localStorage.getItem('activeProject')? <>
-            <div className="itemDisplay" style={hoverProject? {display:'block'} : {display:'none'}} >
-            <AiOutlineClose onClick={closeIcon}/>
-            <a href={atvProjectDisplay.link}>
-              <img src={atvProjectDisplay.Image} alt={atvProjectDisplay.project} />
-             </a>{" "}
-             <p>{atvProjectDisplay.project}</p>
-             <p>
-              {atvProjectDisplay.description}
-             </p>
-             <p><b>Technology used: </b> 
-              {' '+ atvProjectDisplay.technology}
-             </p>
-           </div>
-            </> :null
-          }
-          {/* <div>{projectClick}</div> */}
-          <div className="projectList">
-              { projects.map(item =>(
-              <p data-id={item.id} key={item.id} onClick={() =>project (item.id)}>{item.project}</p>
-              ))}
-          </div>
+                        { projects.map(item =>(
 
-             
+          <div className="project">
+            <div className="itemDisplay" >
+            {/* <AiOutlineClose onClick={closeIcon}/> */}
+            {/* <a href={item.link}> */}
+              <img src={item.Image} alt={item.project} />
+             {/* </a>{" "} */}
+             </div>
+             <div className="project-text">
+             <h2>{item.project}</h2>
+             <p>
+              {item.description}
+             </p>
+             <a href={item.demo}>Live demo</a>
+             <a href={item.repo}>Repo</a>
+
+             <div >
+                { item.technology.map(item =>(
+                               <span>{item}</span>
+                   ))} 
+             </div>
+           </div>
           </div>
+           ))}
+
         </section>
       </section>
       {/* <footer>
