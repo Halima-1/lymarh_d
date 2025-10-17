@@ -1,0 +1,104 @@
+form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+
+    h2 {
+        width: 100%;
+        color: rgb(27, 27, 27);
+        font-weight: 400;
+        font-size: 1.7rem;
+        // display: none;
+        // margin: 0 auto;
+    }
+
+    div {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        margin-top: 10px;
+
+        input {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            outline: none;
+            margin-top: 10px;
+        }
+
+        label {
+            color: gray;
+        }
+    }
+
+    input {
+        width: 90%;
+        padding: 7px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        outline: none;
+        margin-top: 10px;
+    }
+
+    .btn {
+        display: block;
+        width: 20%;
+        padding: 7px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        outline: none;
+        margin-top: 10px;
+        background-color: rgb(36, 80, 177);
+        color: white;
+        text-align: center;
+    }
+
+    @media (min-width: 768px) {
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        align-self: center;
+        align-items: center;
+        align-content: center;
+
+        div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+
+            input {
+                width: 100%;
+                padding: 7px;
+                border: 1px solid gray;
+                border-radius: 10px;
+                outline: none;
+                margin-top: 10px;
+            }
+
+            label {
+                color: gray;
+            }
+        }
+
+        .btn {
+            width: 20%;
+            // display: none;
+            padding: 7px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            outline: none;
+            margin-top: 10px;
+            background-color: rgb(36, 80, 177);
+            color: white;
+            text-align: center;
+        }
+    }
+}

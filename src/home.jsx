@@ -1,7 +1,10 @@
 import React, { useState,useEffect } from "react";
 import "./styles/index.scss";
+// import "./styles/animation.scss";
 import { BiCross, BiHeart } from "react-icons/bi";
+import useIntersection from "./component/useIntersection";
 import {
+  BsArrowUpRight,
   BsFacebook,
   BsFillEmojiNeutralFill,
   BsFillEnvelopeFill,
@@ -12,46 +15,57 @@ import {
 import { HiHandRaised } from "react-icons/hi2";
 import { GrUserFemale } from "react-icons/gr";
 import { AiOutlineClose } from "react-icons/ai";
+import Form from "./component/form";
 
 function Home() {
   const [hoverProject, setHoverProject] = useState(false);
+  const [ref, isVisible] = useIntersection({ threshold: 0.1 });
+console.log(isVisible)
  // project lists
  const projects =[
-  {project: 'Task pad', demo:'https://lymarh-taskpad.netlify.app/', repo:'' ,
-  Image:"/taskpad image.png", id:1, 
+  {project: 'Planify', demo:'https:https://planiffyy.netlify.app//', repo:'https://github.com/Halima-1/Planify.git' ,
+  Image:"/planiffy.png", id:1, 
+  description:"Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events. Users can RSVP to events,view event locations on a map, and manage their own created events with edit and delete options.",
+  technology:['React.js', "Firebase",'SASS','Git & github','Netlify']}, 
+  {project: 'AuraMart', demo:'https://aura-mart.netlify.app/', repo:'' ,
+  Image:"/mart.png", id:2, 
+  description:"Auramart is a stylish and modern e-commerce web application designed for a fun shopping experience. It allows users to browse, search, and shop from various product categories — including furniture, fragrances, groceries, and beauty accessories — all from one sleek interface.",
+  technology:['React.js', "Firebase",'SASS','Git & github','Netlify']},
+  {project: 'Task pad', demo:'https://lymarh-taskpad.netlify.app/', repo:'https://github.com/Halima-1/auraMart.git' ,
+  Image:"/taskpad image.png", id:3, 
   description:"A simple, intuitive, and efficient to-do app designed to help you stay organized and productive every day.",
   technology:['React.js','SASS','Git & github','Netlify']},
   {project: 'Multi step form',
   demo:'https://multii-form.netlify.app/', repo:'' ,
   Image:"/multi-form.png", 
-  id:2, 
+  id:4, 
   description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", 
   technology:['React.js','SASS','Git & github','Netlify']},
   {project: 'Quiz app',
   demo:'https://trivia-twist.netlify.app/',repo:'' ,
-   Image:"/trivia.png", id:3, 
+   Image:"/trivia.png", id:5, 
    description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",
    technology:['HTML5','CSS3', 'Git & github', 'Netlify']},
   {project: 'Product page',
   demo:'https://halima-1.github.io/web3Bridge_product_details/', repo:'' ,
-  Image:"/product-details.png",  id:4, 
+  Image:"/product-details.png",  id:6, 
   description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.",
   technology:['React.js','SASS','Git & github','Github']},
   {project: 'ProNet',
   demo:'https://pro-net.onrender.com/', repo:'' ,
-  Image:"/pronet.png",  id:5, 
+  Image:"/pronet.png",  id:7, 
   description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.",
   technology:['React.js','SASS','Git & github','Render']},
-  {project: 'Ticket generator',
-  demo:'https://ticket-generator-5aug.onrender.com/',repo:'' , 
-  Image:"/ticket-generator.png",  
-  id:6, description:"This is a linkedIn clone", 
-  technology:['React.js','SASS','Git & github','Render']},
-  {project: 'Color game',
-  demo:'https://colorgame-05k0.onrender.com', repo:'' ,
-  Image:"/color-game.png",  id:7,
-  description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", 
-  technology:['React.js','SASS','Git & github','Render']}
+  // {project: 'Ticket generator',
+  // demo:'https://ticket-generator-5aug.onrender.com/',repo:'' , 
+  // Image:"/ticket-generator.png",  
+  // id:6, description:"This is a linkedIn clone", 
+  // technology:['React.js','SASS','Git & github','Render']}
+  // {project: 'Color game',
+  // demo:'https://colorgame-05k0.onrender.com', repo:'' ,
+  // Image:"/color-game.png",  id:7,
+  // description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", 
+  // technology:['React.js','SASS','Git & github','Render']}
 ]
 // localStorage.removeItem('activeProject')
 // setting a clicked project to local storage to display it details
@@ -89,11 +103,26 @@ localStorage.setItem('projects', JSON.stringify(projects))
             <BsStar />
             <BsStar />
             <BsStar />
-
+             Halima Dahunsi
           </h1>
         </div>
         <nav>
-          <a href="mailto:dahunsiolajumoke18@gmail.com">
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+          <a href="#project">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+      <section className="main">
+        <section className="intro" id="about">
+          {/* <h1>Welcome!</h1> */}
+          <p>
+            I am  Halima Dahunsi, <b>Frontend Developer</b> skilled in JavaScript, React,
+             and modern CSS frameworks. I specialize in building responsive websites, 
+            dynamic interfaces, and interactive applications that bring ideas to life.
+             Looking for someone who can turn designs into real, working products? I’d love to help.
+            </p>
+<div>            <a href="mailto:dahunsiolajumoke18@gmail.com">
             {" "}
             <BsFillEnvelopeFill />
           </a>
@@ -105,32 +134,30 @@ localStorage.setItem('projects', JSON.stringify(projects))
             {" "}
             <BsLinkedin />
           </a>
-        </nav>
-      </header>
-      <section className="main">
-        <section className="intro">
-          {/* <h1>Welcome!</h1> */}
-          <p>
-            Hi, I am  Halima Dahunsi, Frontend Developer skilled in JavaScript, React,
-             and modern CSS frameworks. I specialize in building responsive websites, 
-            dynamic interfaces, and interactive applications that bring ideas to life.
-            For me, frontend development is more than code — it’s about creating meaningful
-             digital experiences.
-             Looking for someone who can turn designs into real, working products? I’d love to help.
-            </p>
           <a
             className="btn"
             href="https://docs.google.com/document/d/1VEmdD9m2WNQHkEEZldhDPXPwOlGJtoxiwr0hVwucgSM/edit?usp=sharing"
           >
             {" "}
             RESUME
-          </a>
+          </a></div>
+          <div className="skills">
+          <p>React</p>
+          <p>Javascript</p>
+            <p>Node js</p>
+          <p>Firebase</p>
+            <p>HTML5</p>
+            <p>CSS3</p>
+            <p>Boostrap</p>
+            <p>CLI</p>
+            <p>Git&Github</p>
+          </div>
         </section>
-        <section className="project-display">
+        <section className="project-display" id="project">
           <h1>My recent projects</h1>
                         { projects.map(item =>(
 
-          <div className="project">
+          <div  ref={ref} className={`project bounce-up`}>
             <div className="itemDisplay" >
             {/* <AiOutlineClose onClick={closeIcon}/> */}
             {/* <a href={item.link}> */}
@@ -142,12 +169,12 @@ localStorage.setItem('projects', JSON.stringify(projects))
              <p>
               {item.description}
              </p>
-             <a href={item.demo}>Live demo</a>
+             <a href={item.demo} >Live demo <BsArrowUpRight/></a>
              <a href={item.repo}>Repo</a>
 
              <div >
-                { item.technology.map(item =>(
-                               <span>{item}</span>
+                { item.technology.map((item,index) =>(
+                               <span key={index}>{item}</span>
                    ))} 
              </div>
            </div>
@@ -155,6 +182,8 @@ localStorage.setItem('projects', JSON.stringify(projects))
            ))}
 
         </section>
+        <Form />
+
       </section>
       {/* <footer>
         <nav></nav>
