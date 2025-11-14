@@ -10,17 +10,23 @@ import {
   BsFillEnvelopeFill,
   BsGithub,
   BsLinkedin,
+  BsMenuButton,
   BsStar,
 } from "react-icons/bs";
 import { HiHandRaised } from "react-icons/hi2";
-import { GrUserFemale } from "react-icons/gr";
+import { GrClose, GrUserFemale } from "react-icons/gr";
 import { AiOutlineClose } from "react-icons/ai";
 import Form from "./component/form";
+import Footer from "./component/footer";
 
 function Home() {
-  const [hoverProject, setHoverProject] = useState(false);
+  const [menubar, setMenubar] = useState(false);
   const [ref, isVisible] = useIntersection({ threshold: 0.1 });
 console.log(isVisible)
+
+const menu =()=>{
+  setMenubar(!menubar)
+}
  // project lists
  const projects =[
   {project: 'Planify', demo:'https:https://planiffyy.netlify.app//', repo:'https://github.com/Halima-1/Planify.git' ,
@@ -41,7 +47,7 @@ console.log(isVisible)
   id:4, 
   description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", 
   technology:['React.js','SASS','Git & github','Netlify']},
-  {project: 'Quiz app',
+  {project: 'Trivia twist',
   demo:'https://trivia-twist.netlify.app/',repo:'' ,
    Image:"/trivia.png", id:5, 
    description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",
@@ -51,11 +57,11 @@ console.log(isVisible)
   Image:"/product-details.png",  id:6, 
   description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.",
   technology:['React.js','SASS','Git & github','Github']},
-  {project: 'ProNet',
-  demo:'https://pro-net.onrender.com/', repo:'' ,
-  Image:"/pronet.png",  id:7, 
-  description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.",
-  technology:['React.js','SASS','Git & github','Render']},
+  // {project: 'ProNet',
+  // demo:'https://pro-net.onrender.com/', repo:'' ,
+  // Image:"/pronet.png",  id:7, 
+  // description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.",
+  // technology:['React.js','SASS','Git & github','Render']},
   // {project: 'Ticket generator',
   // demo:'https://ticket-generator-5aug.onrender.com/',repo:'' , 
   // Image:"/ticket-generator.png",  
@@ -69,30 +75,30 @@ console.log(isVisible)
 ]
 // localStorage.removeItem('activeProject')
 // setting a clicked project to local storage to display it details
-const [activeItems, setActiveItems] = useState(0);
-if(localStorage.getItem('activeProject')
-){null}
-else{localStorage.setItem('activeProject', JSON.stringify(projects[0]))
-}
-localStorage.setItem('projects', JSON.stringify(projects))
-// project displaying a project is clicked
-  const project = (id) => {
-    if(JSON.parse(localStorage.getItem('activeProject')).id ===id){
-      setHoverProject(!hoverProject)
-    }
-    console.log(id)
-    const activeProject =projects.find(item => item.id ===id)
-    //  projectClick =<p>hello</p>
-     localStorage.setItem('activeProject', JSON.stringify(activeProject))
-    // console.log(projectClick)
-    console.log(activeProject)
-  };
-  // to close project display
-  const closeIcon =()=>{
-    setHoverProject(!hoverProject)
+// const [activeItems, setActiveItems] = useState(0);
+// if(localStorage.getItem('activeProject')
+// ){null}
+// else{localStorage.setItem('activeProject', JSON.stringify(projects[0]))
+// }
+// localStorage.setItem('projects', JSON.stringify(projects))
+// // project displaying a project is clicked
+//   const project = (id) => {
+//     if(JSON.parse(localStorage.getItem('activeProject')).id ===id){
+//       setHoverProject(!hoverProject)
+//     }
+//     console.log(id)
+//     const activeProject =projects.find(item => item.id ===id)
+//     //  projectClick =<p>hello</p>
+//      localStorage.setItem('activeProject', JSON.stringify(activeProject))
+//     // console.log(projectClick)
+//     console.log(activeProject)
+//   };
+//   // to close project display
+//   const closeIcon =()=>{
+//     setHoverProject(!hoverProject)
 
-  }
-  const atvProjectDisplay =JSON.parse(localStorage.getItem('activeProject'))
+//   }
+//   const atvProjectDisplay =JSON.parse(localStorage.getItem('activeProject'))
   return (
     <>
       <header>
@@ -112,12 +118,21 @@ localStorage.setItem('projects', JSON.stringify(projects))
           <a href="#project">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
+        {menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
+        <GrClose className="menuIcon" style={{marginRight:100}} onClick={menu}/>}
+        <aside style={menubar? {display: "none"} :{display: "flex"}}>
+          <a href="#">Home</a>
+          <a href="#about">About</a>
+          <a href="#project">Projects</a>
+          <a href="#contact">Contact</a>
+      </aside>
       </header>
+      
       <section className="main">
         <section className="intro" id="about">
           {/* <h1>Welcome!</h1> */}
           <p>
-            I am  Halima Dahunsi, <b>Frontend Developer</b> skilled in JavaScript, React,
+            I am a<b> Frontend Developer</b> skilled in JavaScript, Reactjs,
              and modern CSS frameworks. I specialize in building responsive websites, 
             dynamic interfaces, and interactive applications that bring ideas to life.
              Looking for someone who can turn designs into real, working products? I’d love to help.
@@ -142,27 +157,24 @@ localStorage.setItem('projects', JSON.stringify(projects))
             RESUME
           </a></div>
           <div className="skills">
-          <p>React</p>
-          <p>Javascript</p>
-            <p>Node js</p>
-          <p>Firebase</p>
-            <p>HTML5</p>
-            <p>CSS3</p>
-            <p>Boostrap</p>
-            <p>CLI</p>
-            <p>Git&Github</p>
+          <span>Reactjs</span>
+          {/* <p>Javascript</p> */}
+            <span>Nodejs</span>
+          <span>Firebase</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Boostrap</span>
+            <span>CLI</span>
+            <span>Git&Github</span>
           </div>
         </section>
         <section className="project-display" id="project">
           <h1>My recent projects</h1>
                         { projects.map(item =>(
 
-          <div  ref={ref} className={`project bounce-up`}>
+          <div key={item.id}  ref={ref} className={`project bounce-up`}>
             <div className="itemDisplay" >
-            {/* <AiOutlineClose onClick={closeIcon}/> */}
-            {/* <a href={item.link}> */}
               <img src={item.Image} alt={item.project} />
-             {/* </a>{" "} */}
              </div>
              <div className="project-text">
              <h2>{item.project}</h2>
@@ -171,7 +183,6 @@ localStorage.setItem('projects', JSON.stringify(projects))
              </p>
              <a href={item.demo} >Live demo <BsArrowUpRight/></a>
              <a href={item.repo}>Repo</a>
-
              <div >
                 { item.technology.map((item,index) =>(
                                <span key={index}>{item}</span>
@@ -180,26 +191,14 @@ localStorage.setItem('projects', JSON.stringify(projects))
            </div>
           </div>
            ))}
-
         </section>
-        <Form />
-
       </section>
-      {/* <footer>
-        <nav></nav>
-        <div>
-        <h1>
-            <BsStar />
-            <BsStar />
-            <BsStar />
-            <BsStar />
-            <BsStar />
-
-          </h1>
-        </div>
-      </footer> */}
+      <h2 className="contactt"><hr /> Contact</h2>
+      <Form />
+      <Footer />
     </>
   );
 }
+
 
 export default Home;
