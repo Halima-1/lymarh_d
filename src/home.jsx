@@ -207,7 +207,7 @@ useEffect(() => {
            ))}
         </section>
       </section>
-      <h2 className="contactt"><hr /> Contact</h2>
+      <h2 className="contactt">Contact</h2>
       <Form />
       <Footer />
     </>

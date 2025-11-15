@@ -1,80 +1,23 @@
 @import "./_variable.scss";
 
-form {
-    width: 400px;
+.form {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    // margin: 0 auto;
-    align-self: center;
-    align-items: center;
-    align-content: center;
 
     h2 {
-        width: 100%;
-        color: rgb(27, 27, 27);
+        width: 80%;
+        margin: auto;
+        // color: rgb(27, 27, 27);
+        color: white;
         font-weight: 400;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         // display: none;
         // margin: 0 auto;
     }
 
-    div {
+    form {
         width: 90%;
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-        margin-top: 10px;
-
-        input {
-            width: 100%;
-            padding: 7px;
-            border: none;
-            border-bottom: 1px solid gray;
-            background-color: $bg1;
-            outline: none;
-            margin-top: 10px;
-        }
-
-        label {
-            color: gray;
-        }
-    }
-
-    textarea {
-        width: 100%;
-        padding: 7px;
-        border: none;
-        border-bottom: 1px solid gray;
-        background-color: $bg1;
-        outline: none;
-        margin-top: 10px;
-        overflow: hidden;
-    }
-
-    // input {
-    //     width: 90%;
-    //     padding: 7px;
-    //     border: 1px solid gray;
-    //     border-radius: 10px;
-    //     outline: none;
-    //     margin-top: 10px;
-    // }
-
-    .btn {
-        display: block;
-        // width: 20%;
-        padding: 7px;
-        border: 1px solid gray;
-        border-radius: 10px;
-        outline: none;
-        margin-top: 10px;
-        background-color: goldenrod;
-        color: white;
-        text-align: center;
-    }
-
-    @media (min-width: 768px) {
-        width: 400px;
         display: flex;
         flex-direction: column;
         // margin: 0 auto;
@@ -82,17 +25,21 @@ form {
         align-items: center;
         align-content: center;
 
+
+
         div {
-            width: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
+            margin: 0 auto;
             margin-top: 10px;
 
             input {
                 width: 100%;
                 padding: 7px;
-                // border: 1px solid gray;
-                // border-radius: 10px;
+                border: none;
+                border-bottom: 1px solid gray;
+                background-color: $bg1;
                 outline: none;
                 margin-top: 10px;
             }
@@ -102,17 +49,120 @@ form {
             }
         }
 
+        textarea {
+            width: 100%;
+            padding: 7px;
+            border: none;
+            border-bottom: 1px solid gray;
+            background-color: $bg1;
+            outline: none;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        // input {
+        //     width: 90%;
+        //     padding: 7px;
+        //     border: 1px solid gray;
+        //     border-radius: 10px;
+        //     outline: none;
+        //     margin-top: 10px;
+        // }
+
         .btn {
+            display: block;
             // width: 20%;
-            // display: none;
             padding: 7px;
             border: 1px solid gray;
             border-radius: 10px;
             outline: none;
-            margin-top: 20px;
-            // background-color: rgb(36, 80, 177);
+            margin-top: 10px;
+            background-color: goldenrod;
             color: white;
             text-align: center;
         }
+    }
+
+    @media (min-width: 768px) {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        h2 {
+            width: 100%;
+            // color: rgb(27, 27, 27);
+            font-weight: 400;
+            font-size: 1.7rem;
+            // display: none;
+            // margin: 0 auto;
+        }
+
+        form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            align-self: center;
+            align-items: center;
+            align-content: center;
+
+            div {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                margin-top: 10px;
+
+                input {
+                    width: 100%;
+                    padding: 7px;
+                    border: none;
+                    border-bottom: 1px solid gray;
+                    background-color: $bg1;
+                    outline: none;
+                    margin-top: 10px;
+                }
+
+                label {
+                    color: gray;
+                }
+            }
+
+            textarea {
+                width: 100%;
+                padding: 7px;
+                border: none;
+                border-bottom: 1px solid gray;
+                background-color: $bg1;
+                outline: none;
+                margin-top: 10px;
+                overflow: hidden;
+            }
+
+            // input {
+            //     width: 90%;
+            //     padding: 7px;
+            //     border: 1px solid gray;
+            //     border-radius: 10px;
+            //     outline: none;
+            //     margin-top: 10px;
+            // }
+
+            .btn {
+                display: block;
+                // width: 20%;
+                padding: 7px;
+                border: 1px solid gray;
+                border-radius: 10px;
+                outline: none;
+                margin-top: 10px;
+                background-color: goldenrod;
+                color: white;
+                text-align: center;
+            }
+        }
+
     }
 }

@@ -473,10 +473,7 @@ header {
                 font-size: 2rem;
                 font-weight: 500;
                 width: max-content;
-                // margin-left: 0px;
                 margin: 20px auto;
-                border-bottom: 6px solid;
-                // border-radius: 10px;
                 border-image-slice: 1;
                 border-image-source: linear-gradient(to right bottom, #D1DC09, #743ad5, #daa520);
                 border-bottom: 3px solid rgb(227, 227, 235);
@@ -799,18 +796,30 @@ header {
 }
 
 .contactt {
-    width: 20%;
+    width: max-content;
     @include flex;
-    margin: auto;
-    margin-left: 40px;
-    margin-top: 50px;
+    margin-left: 20px;
+    // margin-left: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right bottom, #D1DC09, #743ad5, #daa520);
+    border-bottom: 3px solid rgb(227, 227, 235);
 
-    hr {
-        width: 60%;
-        height: 3px;
-        border: none;
-        border-bottom: 3px solid goldenrod;
-        margin-top: 24px;
+    // }
+    // hr {
+    //     width: 60%;
+    //     height: 3px;
+    //     border: none;
+    //     border-bottom: 3px solid goldenrod;
+    //     margin-top: 24px;
+
+    // }
+
+    @media (min-width: 600px) {
+        margin: auto;
+        margin-top: 40px;
+
 
     }
 }
