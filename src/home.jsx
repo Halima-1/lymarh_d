@@ -18,8 +18,10 @@ import { GrClose, GrUserFemale } from "react-icons/gr";
 import { AiOutlineClose } from "react-icons/ai";
 import Form from "./component/form";
 import Footer from "./component/footer";
+import { useLocation } from "react-router-dom";
 
 function Home() {
+  const location = useLocation();
   const [menubar, setMenubar] = useState(false);
   const [ref, isVisible] = useIntersection({ threshold: 0.1 });
 console.log(isVisible)
@@ -27,9 +29,15 @@ console.log(isVisible)
 const menu =()=>{
   setMenubar(!menubar)
 }
+useEffect(() => {
+  if (!menubar) {
+    setMenubar(false);
+  }
+}, [location.pathname,setMenubar]);
+
  // project lists
  const projects =[
-  {project: 'Planify', demo:'https:https://planiffyy.netlify.app//', repo:'https://github.com/Halima-1/Planify.git' ,
+  {project: 'Planify', demo:'https://planiffyy.netlify.app/', repo:'https://github.com/Halima-1/Planify.git' ,
   Image:"/planiffy.png", id:1, 
   description:"Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events. Users can RSVP to events,view event locations on a map, and manage their own created events with edit and delete options.",
   technology:['React.js', "Firebase",'SASS','Git & github','Netlify']}, 
@@ -107,8 +115,8 @@ const menu =()=>{
             <BsStar />
             <BsStar />
             <BsStar />
-            <BsStar />
-            <BsStar />
+            {/* <BsStar />
+            <BsStar /> */}
              Halima Dahunsi
           </h1>
         </div>
@@ -119,7 +127,7 @@ const menu =()=>{
           <a href="#contact">Contact</a>
         </nav>
         {menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
-        <GrClose className="menuIcon" style={{marginRight:100}} onClick={menu}/>}
+        <GrClose className="menuIcon"  onClick={menu}/>}
         <aside style={menubar? {display: "none"} :{display: "flex"}}>
           <a href="#">Home</a>
           <a href="#about">About</a>
@@ -156,16 +164,22 @@ const menu =()=>{
             {" "}
             RESUME
           </a></div>
+          {/* <div className="resume">
+            <h2>Education/Certification</h2>
+            <b>Federal Univaersity</b>
+          </div> */}
+          <h2 className="skillsH1">Skills</h2>
+
           <div className="skills">
-          <span>Reactjs</span>
-          {/* <p>Javascript</p> */}
-            <span>Nodejs</span>
-          <span>Firebase</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>Boostrap</span>
-            <span>CLI</span>
-            <span>Git&Github</span>
+          <button>React.js</button>
+          <button>Javascript</button>
+            <button>Nodejs</button>
+          <button>Firebase</button>
+            <button>HTML5</button>
+            <button>CSS3</button>
+            <button>Boostrap</button>
+            <button>CLI</button>
+            <button>Git&Github</button>
           </div>
         </section>
         <section className="project-display" id="project">
