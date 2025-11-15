@@ -126,7 +126,7 @@ useEffect(() => {
           <a href="#project">Projects</a>
           <a href="#contact">Contact</a>
         </nav>
-        {menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
+        {!menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
         <GrClose className="menuIcon"  onClick={menu}/>}
         <aside style={!menubar? {display: "none"} :{display: "flex"}}>
           <a href="#">Home</a>
@@ -183,7 +183,7 @@ useEffect(() => {
           </div>
         </section>
         <section className="project-display" id="project">
-          <h1>My recent projects</h1>
+          <h1>Recent projects</h1>
                         { projects.map(item =>(
 
           <div key={item.id}  ref={ref} className={`project bounce-up`}>
@@ -191,13 +191,13 @@ useEffect(() => {
               <img src={item.Image} alt={item.project} />
              </div>
              <div className="project-text">
-             <h2>{item.project}</h2>
+             <h2 style={{margin:0}}>{item.project}</h2>
              <p>
               {item.description}
              </p>
              <a href={item.demo} >Live demo <BsArrowUpRight/></a>
              <a href={item.repo}>Repo</a>
-             <div >
+             <div className="technology">
                 { item.technology.map((item,index) =>(
                                <span key={index}>{item}</span>
                    ))} 

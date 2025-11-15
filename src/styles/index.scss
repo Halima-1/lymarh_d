@@ -390,11 +390,12 @@ header {
             }
 
             .itemDisplay {
+                margin: 0;
 
                 img {
                     object-fit: fill;
                     object-position: center;
-                    height: 200px;
+                    height: 160px;
                     border-radius: 20px 20PX 0px 0px;
 
                 }
@@ -408,7 +409,8 @@ header {
 
                 h2 {
                     color: black;
-                    font-size: 12px;
+                    font-size: 16px;
+                    margin: 0;
 
                 }
 
@@ -435,16 +437,16 @@ header {
                     margin-bottom: 20px;
                 }
 
-                div {
+                .technology {
                     margin-top: 30px;
 
                     span {
                         color: black;
-                        margin-left: 15px;
+                        margin-left: 10px;
                         border: 1px solid black;
                         padding: 5px;
                         border-radius: 10px;
-                        font-size: 14px;
+                        font-size: 12px;
                         // cursor: pointer;
                     }
                 }
@@ -754,7 +756,7 @@ header {
                         margin-left: 0;
                     }
 
-                    div {
+                    .technology {
                         margin-top: 30px;
                         width: 100%;
                         margin-left: 0;
