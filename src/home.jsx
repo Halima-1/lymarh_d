@@ -128,7 +128,7 @@ useEffect(() => {
         </nav>
         {menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
         <GrClose className="menuIcon"  onClick={menu}/>}
-        <aside style={menubar? {display: "none"} :{display: "flex"}}>
+        <aside style={!menubar? {display: "none"} :{display: "flex"}}>
           <a href="#">Home</a>
           <a href="#about">About</a>
           <a href="#project">Projects</a>
