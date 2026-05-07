@@ -180,6 +180,32 @@ function Home() {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!formRef.current || isSending) {
+      return;
+    }
+
+    try {
+      setIsSending(true);
+
+      await emailjs.sendForm(
+        "service_5pxa3vh",
+        "template_5vnrqzb",
+        formRef.current,
+        "h71E_TPgzzVw2_ker"
+      );
+
+      formRef.current.reset();
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message.");
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <>
