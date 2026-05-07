@@ -1,218 +1,539 @@
-import React, { useState,useEffect } from "react";
-import "./styles/index.scss";
-// import "./styles/animation.scss";
-import { BiCross, BiHeart } from "react-icons/bi";
-import useIntersection from "./component/useIntersection";
+import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   BsArrowUpRight,
-  BsFacebook,
-  BsFillEmojiNeutralFill,
-  BsFillEnvelopeFill,
   BsGithub,
-  BsLinkedin,
-  BsMenuButton,
-  BsStar,
+  BsFillEnvelopeFill,
+  BsMoonFill,
+  BsSunFill,
+  BsList
 } from "react-icons/bs";
-import { HiHandRaised } from "react-icons/hi2";
-import { GrClose, GrUserFemale } from "react-icons/gr";
-import { AiOutlineClose } from "react-icons/ai";
+import {
+  SiCss3,
+  SiFirebase,
+  SiGithub,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiSass,
+  SiSolidity,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript
+} from "react-icons/si";
+import { GrClose } from "react-icons/gr";
+import "./styles/index.scss";
 import Form from "./component/form";
-import Footer from "./component/footer";
-import { useLocation } from "react-router-dom";
+
+const FoundryMark = () => (
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M6 4H18V7.4H10V11H16.5V14.4H10V20H6V4Z" fill="currentColor" />
+  </svg>
+);
+
+const techRegistry = {
+  "React.js": { label: "React.js", icon: SiReact, color: "#61DAFB" },
+  TypeScript: { label: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  Typescript: { label: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  "Next.js": { label: "Next.js", icon: SiNextdotjs, color: "#111111" },
+  "Node.js": { label: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
+  Solidity: { label: "Solidity", icon: SiSolidity, color: "#6F7CBA" },
+  Firebase: { label: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  Supabase: { label: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+  "Git & GitHub": { label: "Git & GitHub", icon: SiGithub, color: "#181717" },
+  SASS: { label: "SASS", icon: SiSass, color: "#CC6699" },
+  SCSS: { label: "SCSS", icon: SiSass, color: "#CC6699" },
+  "Tailwind CSS": { label: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  Tailwind: { label: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  CSS: { label: "CSS3", icon: SiCss3, color: "#1572B6" },
+  Foundry: { label: "Foundry", icon: FoundryMark, color: "#A855F7" }
+};
+
+const skills = [
+  "React.js",
+  "TypeScript",
+  "Next.js",
+  "Node.js",
+  "Solidity",
+  "Foundry",
+  "Supabase",
+  "Git & GitHub",
+  "SASS",
+  "Tailwind CSS"
+];
+
+const projects = [
+  {
+    id: 1,
+    project: "Planify",
+    demo: "https://planiffyy.netlify.app/",
+    repo: "https://github.com/Halima-1/Planify.git",
+    Image: "/planiffy.png",
+    description:
+      "Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events.",
+    technology: ["React.js", "Firebase", "SASS"]
+  },
+  {
+    id: 2,
+    project: "Stash",
+    demo: "https://stashh-mvp.vercel.app",
+    repo: "https://github.com/Halima-1/stash.git",
+    Image: "/stash.png",
+    description:
+      "Non-custodial savings for inflation-heavy economies. A smart-contract neobank that lets you save USDC in a flexible or time-locked vault and send peer-to-peer, all from your own wallet.",
+    technology: ["Next.js", "Typescript", "Tailwind", "SCSS", "Solidity"]
+  },
+  {
+    id: 3,
+    project: "Propsphere",
+    demo: "https://prop-sphere.vercel.app",
+    repo: "https://github.com/Halima-1/prop-sphere.git",
+    Image: "/taskpad image.png",
+    description:
+      "This is a property management dApp built on Lisk sepolia testnet. User can upload images of their property and list for buyers.",
+    technology: ["React.js", "Typescript", "SCSS"]
+  },
+  {
+    id: 4,
+    project: "Multi Step Form",
+    demo: "https://multii-form.netlify.app/",
+    repo: "",
+    Image: "/multi-form.png",
+    description:
+      "A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic validation.",
+    technology: ["React.js", "SASS"]
+  },
+  {
+    id: 5,
+    project: "Pulse AI",
+    demo: "https://planiffyy.netlify.app/",
+    repo: "https://github.com/Halima-1/pulse-ai.git",
+    Image: "/planiffy.png",
+    description: "AI-guided, wallet-native risk management protocol for Solana.",
+    technology: ["React.js", "Tailwind", "Supabase", "CSS"]
+  }
+];
+
+const rolesData = [
+  { text: "Frontend Developer", link: null },
+  { text: "Blockchain Fullstack Developer", link: null },
+  { text: "Web3 Technical Writer", link: null }
+];
+
+const imagesData = ["/halima1.jpeg", "/halima2.jpeg", "/halima3.jpeg"];
+
+const socialLinks = [
+  {
+    href: "mailto:dahunsiolajumoke18@gmail.com",
+    label: "Email",
+    icon: BsFillEnvelopeFill
+  },
+  {
+    href: "https://github.com/Halima-1",
+    label: "GitHub",
+    icon: BsGithub
+  }
+];
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2 }
+  }
+};
 
 function Home() {
-  const location = useLocation();
-  const [menubar, setMenubar] = useState(false);
-  const [ref, isVisible] = useIntersection({ threshold: 0.1 });
-console.log(isVisible)
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [imgIndex, setImgIndex] = useState(0);
+  const [isSending, setIsSending] = useState(false);
+  const formRef = useRef(null);
 
-const menu =()=>{
-  setMenubar(!menubar)
-}
-useEffect(() => {
-  if (!menubar) {
-    setMenubar(false);
-  }
-}, [location.pathname,setMenubar]);
+  useEffect(() => {
+    const roleInterval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % rolesData.length);
+    }, 3000);
 
- // project lists
- const projects =[
-  {project: 'Planify', demo:'https://planiffyy.netlify.app/', repo:'https://github.com/Halima-1/Planify.git' ,
-  Image:"/planiffy.png", id:1, 
-  description:"Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events. Users can RSVP to events,view event locations on a map, and manage their own created events with edit and delete options.",
-  technology:['React.js', "Firebase",'SASS','Git & github','Netlify']}, 
-  {project: 'AuraMart', demo:'https://aura-mart.netlify.app/', repo:'' ,
-  Image:"/mart.png", id:2, 
-  description:"Auramart is a stylish and modern e-commerce web application designed for a fun shopping experience. It allows users to browse, search, and shop from various product categories — including furniture, fragrances, groceries, and beauty accessories — all from one sleek interface.",
-  technology:['React.js', "Firebase",'SASS','Git & github','Netlify']},
-  {project: 'Task pad', demo:'https://lymarh-taskpad.netlify.app/', repo:'https://github.com/Halima-1/auraMart.git' ,
-  Image:"/taskpad image.png", id:3, 
-  description:"A simple, intuitive, and efficient to-do app designed to help you stay organized and productive every day.",
-  technology:['React.js','SASS','Git & github','Netlify']},
-  {project: 'Multi step form',
-  demo:'https://multii-form.netlify.app/', repo:'' ,
-  Image:"/multi-form.png", 
-  id:4, 
-  description:"A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic form validation.", 
-  technology:['React.js','SASS','Git & github','Netlify']},
-  {project: 'Trivia twist',
-  demo:'https://trivia-twist.netlify.app/',repo:'' ,
-   Image:"/trivia.png", id:5, 
-   description:"A fun, interactive quiz app designed to challenge users with multiple-choice questions across various topics. It features a timer,  and scoring system,",
-   technology:['HTML5','CSS3', 'Git & github', 'Netlify']},
-  {project: 'Product page',
-  demo:'https://halima-1.github.io/web3Bridge_product_details/', repo:'' ,
-  Image:"/product-details.png",  id:6, 
-  description:"A Products Page that displays available products with price and details. Users can add items to cart, and navigate to the cart page.",
-  technology:['React.js','SASS','Git & github','Github']},
-  // {project: 'ProNet',
-  // demo:'https://pro-net.onrender.com/', repo:'' ,
-  // Image:"/pronet.png",  id:7, 
-  // description:"A LinkedIn-inspired social networking platform built with React, designed to mimic the core features of LinkedIn.",
-  // technology:['React.js','SASS','Git & github','Render']},
-  // {project: 'Ticket generator',
-  // demo:'https://ticket-generator-5aug.onrender.com/',repo:'' , 
-  // Image:"/ticket-generator.png",  
-  // id:6, description:"This is a linkedIn clone", 
-  // technology:['React.js','SASS','Git & github','Render']}
-  // {project: 'Color game',
-  // demo:'https://colorgame-05k0.onrender.com', repo:'' ,
-  // Image:"/color-game.png",  id:7,
-  // description:"A fun and interactive color guessing game! The player must click the correct button that matches the displayed color. This game helps improve quick thinking and color recognition skills.", 
-  // technology:['React.js','SASS','Git & github','Render']}
-]
-// localStorage.removeItem('activeProject')
-// setting a clicked project to local storage to display it details
-// const [activeItems, setActiveItems] = useState(0);
-// if(localStorage.getItem('activeProject')
-// ){null}
-// else{localStorage.setItem('activeProject', JSON.stringify(projects[0]))
-// }
-// localStorage.setItem('projects', JSON.stringify(projects))
-// // project displaying a project is clicked
-//   const project = (id) => {
-//     if(JSON.parse(localStorage.getItem('activeProject')).id ===id){
-//       setHoverProject(!hoverProject)
-//     }
-//     console.log(id)
-//     const activeProject =projects.find(item => item.id ===id)
-//     //  projectClick =<p>hello</p>
-//      localStorage.setItem('activeProject', JSON.stringify(activeProject))
-//     // console.log(projectClick)
-//     console.log(activeProject)
-//   };
-//   // to close project display
-//   const closeIcon =()=>{
-//     setHoverProject(!hoverProject)
+    const imgInterval = setInterval(() => {
+      setImgIndex((prev) => (prev + 1) % imagesData.length);
+    }, 4000);
 
-//   }
-//   const atvProjectDisplay =JSON.parse(localStorage.getItem('activeProject'))
+    return () => {
+      clearInterval(roleInterval);
+      clearInterval(imgInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!formRef.current || isSending) {
+      return;
+    }
+
+    try {
+      setIsSending(true);
+
+      await emailjs.sendForm(
+        "service_5pxa3vh",
+        "template_5vnrqzb",
+        formRef.current,
+        "h71E_TPgzzVw2_ker"
+      );
+
+      formRef.current.reset();
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to send message.");
+    } finally {
+      setIsSending(false);
+    }
+  };
+
   return (
     <>
       <header>
-        <div>
-          <h1>
-            <BsStar />
-            <BsStar />
-            <BsStar />
-            {/* <BsStar />
-            <BsStar /> */}
-             Halima Dahunsi
-          </h1>
-        </div>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#project">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        {!menubar? <BsMenuButton className="menuIcon" onClick={menu}/> :
-        <GrClose className="menuIcon"  onClick={menu}/>}
-        <aside style={!menubar? {display: "none"} :{display: "flex"}}>
-          <a href="#">Home</a>
-          <a href="#about">About</a>
-          <a href="#project">Projects</a>
-          <a href="#contact">Contact</a>
-      </aside>
-      </header>
-      
-      <section className="main">
-        <section className="intro" id="about">
-          {/* <h1>Welcome!</h1> */}
-          <p>
-            I am a<b> Frontend Developer</b> skilled in JavaScript, Reactjs,
-             and modern CSS frameworks. I specialize in building responsive websites, 
-            dynamic interfaces, and interactive applications that bring ideas to life.
-             Looking for someone who can turn designs into real, working products? I’d love to help.
-            </p>
-<div>            <a href="mailto:dahunsiolajumoke18@gmail.com">
-            {" "}
-            <BsFillEnvelopeFill />
-          </a>
-          <a href="https://github.com/Halima-1">
-            {" "}
-            <BsGithub />
-          </a>
-          <a href="">
-            {" "}
-            <BsLinkedin />
-          </a>
-          <a
-            className="btn"
-            href="https://docs.google.com/document/d/1VEmdD9m2WNQHkEEZldhDPXPwOlGJtoxiwr0hVwucgSM/edit?usp=sharing"
+        <div className="container header-inner">
+          <div className="logo">
+            <img src="/halima1.jpeg" alt="Halima Dahunsi" className="logo-avatar" />
+            <div className="logo-copy">
+              Halima<span className="dot">.</span>
+            </div>
+          </div>
+
+          <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
+            <a href="#home" onClick={() => setMenuOpen(false)}>
+              Home
+            </a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>
+              About
+            </a>
+            <a href="#projects" onClick={() => setMenuOpen(false)}>
+              Projects
+            </a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </a>
+
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+              {theme === "dark" ? <BsSunFill /> : <BsMoonFill />}
+            </button>
+          </nav>
+
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
           >
-            {" "}
-            RESUME
-          </a></div>
-          {/* <div className="resume">
-            <h2>Education/Certification</h2>
-            <b>Federal Univaersity</b>
-          </div> */}
-          <h2 className="skillsH1">Skills</h2>
+            {menuOpen ? <GrClose /> : <BsList />}
+          </button>
+        </div>
+      </header>
 
-          <div className="skills">
-          <button>React.js</button>
-          <button>Javascript</button>
-            <button>Nodejs</button>
-          <button>Firebase</button>
-            <button>HTML5</button>
-            <button>CSS3</button>
-            <button>Boostrap</button>
-            <button>CLI</button>
-            <button>Git&Github</button>
+      <main>
+        <section id="home" className="hero container">
+          <motion.div
+            className="hero-content"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            <motion.h1 variants={fadeInUp}>
+              Crafting <span className="gold-text">digital experiences</span> that matter.
+            </motion.h1>
+            <motion.p variants={fadeInUp}>
+              I am a Frontend Developer skilled in building visually stunning, responsive,
+              and robust web applications. I transform ideas into seamless digital realities.
+            </motion.p>
+            <motion.div className="hero-actions" variants={fadeInUp}>
+              <a href="#projects" className="btn-primary">
+                View My Work
+              </a>
+              <a
+                href="https://docs.google.com/document/d/1VEmdD9m2WNQHkEEZldhDPXPwOlGJtoxiwr0hVwucgSM/edit"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary"
+              >
+                Resume
+              </a>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        <section id="about" className="section container">
+          <motion.h2
+            className="section-title"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            About Me
+          </motion.h2>
+
+          <div className="about-content">
+            <motion.div
+              className="about-text"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={staggerContainer}
+            >
+              <motion.p variants={fadeInUp}>
+                I bridge the gap between design and engineering, ensuring every application
+                feels polished and performant. Here is a brief look at my primary roles:
+              </motion.p>
+
+              <div className="role-cycler-container">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={roleIndex}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="role-item"
+                  >
+                    <span className="role-bullet"></span>
+                    {rolesData[roleIndex].text}
+                    {rolesData[roleIndex].link && (
+                      <a
+                        href={rolesData[roleIndex].link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="role-link"
+                      >
+                        (View Medium)
+                      </a>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <motion.p variants={fadeInUp}>
+                When I&apos;m not coding, I&apos;m constantly learning about new paradigms in
+                web development, exploring smart contracts, and fine-tuning my design
+                aesthetics.
+              </motion.p>
+
+              <motion.div className="social-links about-social-links" variants={fadeInUp}>
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
+
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                      aria-label={link.label}
+                    >
+                      <Icon />
+                    </a>
+                  );
+                })}
+              </motion.div>
+
+              <motion.div
+                className="skills-wrapper"
+                variants={staggerContainer}
+              >
+                <h3 className="toolbox-title">My Toolbox</h3>
+                <div className="skills-grid">
+                  {skills.map((skill, index) => {
+                    const tech = techRegistry[skill];
+                    const TechIcon = tech.icon;
+
+                    return (
+                      <motion.div
+                        key={index}
+                        className="skill-card"
+                        variants={fadeInUp}
+                        style={{ "--brand-color": tech.color }}
+                      >
+                        <div className="skill-logo" aria-hidden="true">
+                          <TechIcon />
+                        </div>
+                        <span>{tech.label}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              className="about-images"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={imgIndex}
+                  className="image-wrapper"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <img src={imagesData[imgIndex]} alt={`Portrait of Halima ${imgIndex + 1}`} />
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
           </div>
         </section>
-        <section className="project-display" id="project">
-          <h1>Recent projects</h1>
-                        { projects.map(item =>(
 
-          <div key={item.id}  ref={ref} className={`project bounce-up`}>
-            <div className="itemDisplay" >
-              <img src={item.Image} alt={item.project} />
-             </div>
-             <div className="project-text">
-             <h2 style={{margin:0}}>{item.project}</h2>
-             <p>
-              {item.description}
-             </p>
-             <a href={item.demo} >Live demo <BsArrowUpRight/></a>
-             <a href={item.repo}>Repo</a>
-             <div className="technology">
-                { item.technology.map((item,index) =>(
-                               <span key={index}>{item}</span>
-                   ))} 
-             </div>
-           </div>
-          </div>
-           ))}
+        <section id="projects" className="section container">
+          <motion.h2
+            className="section-title"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            Recent Works
+          </motion.h2>
+
+          <motion.div
+            className="projects-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={staggerContainer}
+          >
+            {projects.map((project) => (
+              <motion.div key={project.id} className="project-card" variants={fadeInUp}>
+                <img src={project.Image} alt={project.project} className="project-img" />
+                <div className="project-info">
+                  <h3>{project.project}</h3>
+                  <div className="project-tech">
+                    {project.technology.map((tech, index) => {
+                      const techItem = techRegistry[tech];
+                      const TechIcon = techItem.icon;
+
+                      return (
+                        <span
+                          key={index}
+                          className="tech-pill"
+                          style={{ "--brand-color": techItem.color }}
+                          title={techItem.label}
+                        >
+                          <TechIcon aria-hidden="true" />
+                          <span>{techItem.label}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                  <p>{project.description}</p>
+                  <div className="project-links">
+                    <a href={project.demo} target="_blank" rel="noreferrer">
+                      Live Demo <BsArrowUpRight />
+                    </a>
+                    {project.repo && (
+                      <a href={project.repo} target="_blank" rel="noreferrer">
+                        Repo <BsGithub />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
-      </section>
-      <h2 className="contactt">Contact</h2>
-      <Form />
-      <Footer />
+
+        <section id="contact" className="section container">
+          <motion.h2
+            className="section-title"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            Get In Touch
+          </motion.h2>
+
+          <div className="contact-container">
+            <Form />
+
+            {/*  <motion.div
+            className="contact-info"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+          >
+            <p>
+              Looking to collaborate on a new project or just want to say hi? My inbox is
+              always open. I&apos;ll get back to you as soon as possible.
+            </p>
+
+            <div className="social-links">
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target={link.href.startsWith("http") ? "_blank" : undefined}
+                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                    aria-label={link.label}
+                  >
+                    <Icon />
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          <motion.form
+            ref={formRef}
+            className="contact-form"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInUp}
+            onSubmit={handleSubmit}
+          >
+            <input type="text" name="name" placeholder="Your Name" required />
+            <input type="email" name="email" placeholder="Your Email" required />
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" className="btn-primary" disabled={isSending}>
+              {isSending ? "Sending..." : "Send Message"}
+            </button>
+          </motion.form> */}
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="container">
+          <p>© {new Date().getFullYear()} Halima Dahunsi. All rights reserved.</p>
+        </div>
+      </footer>
     </>
   );
 }
-
 
 export default Home;
