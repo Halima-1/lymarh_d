@@ -24,7 +24,6 @@ import {
 } from "react-icons/si";
 import { GrClose } from "react-icons/gr";
 import "./styles/index.scss";
-import Form from "./component/form";
 
 const FoundryMark = () => (
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -181,32 +180,6 @@ function Home() {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!formRef.current || isSending) {
-      return;
-    }
-
-    try {
-      setIsSending(true);
-
-      await emailjs.sendForm(
-        "service_5pxa3vh",
-        "template_5vnrqzb",
-        formRef.current,
-        "h71E_TPgzzVw2_ker"
-      );
-
-      formRef.current.reset();
-      alert("Message sent successfully!");
-    } catch (error) {
-      console.error(error);
-      alert("Failed to send message.");
-    } finally {
-      setIsSending(false);
-    }
-  };
 
   return (
     <>
@@ -474,55 +447,53 @@ function Home() {
           </motion.h2>
 
           <div className="contact-container">
-            <Form />
+            <motion.div
+              className="contact-info"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+            >
+              <p>
+                Looking to collaborate on a new project or just want to say hi? My inbox is
+                always open. I&apos;ll get back to you as soon as possible.
+              </p>
 
-            {/*  <motion.div
-            className="contact-info"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInUp}
-          >
-            <p>
-              Looking to collaborate on a new project or just want to say hi? My inbox is
-              always open. I&apos;ll get back to you as soon as possible.
-            </p>
+              <div className="social-links">
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
 
-            <div className="social-links">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
+                  return (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                      aria-label={link.label}
+                    >
+                      <Icon />
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
 
-                return (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    aria-label={link.label}
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-            </div>
-          </motion.div>
-
-          <motion.form
-            ref={formRef}
-            className="contact-form"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInUp}
-            onSubmit={handleSubmit}
-          >
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input type="email" name="email" placeholder="Your Email" required />
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" className="btn-primary" disabled={isSending}>
-              {isSending ? "Sending..." : "Send Message"}
-            </button>
-          </motion.form> */}
+            <motion.form
+              ref={formRef}
+              className="contact-form"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={fadeInUp}
+              onSubmit={handleSubmit}
+            >
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+              <textarea name="message" placeholder="Your Message" required></textarea>
+              <button type="submit" className="btn-primary" disabled={isSending}>
+                {isSending ? "Sending..." : "Send Message"}
+              </button>
+            </motion.form>
           </div>
         </section>
       </main>
