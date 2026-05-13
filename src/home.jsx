@@ -65,20 +65,19 @@ const skills = [
 const projects = [
   {
     id: 1,
-    project: "Planify",
+    project: "Pulse AI",
     demo: "https://planiffyy.netlify.app/",
-    repo: "https://github.com/Halima-1/Planify.git",
-    Image: "/planiffy.png",
-    description:
-      "Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events.",
-    technology: ["React.js", "Firebase", "SASS"]
+    repo: "https://github.com/Halima-1/pulse-ai.git",
+    Image: "/pulse.png",
+    description: "AI-guided, wallet-native risk management protocol for Solana with real-time portfolio and token risk analysis in the frontend",
+    technology: ["React.js", "Tailwind", "Supabase", "CSS"]
   },
   {
     id: 2,
     project: "Stash",
     demo: "https://stashh-mvp.vercel.app",
     repo: "https://github.com/Halima-1/stash.git",
-    Image: "/stash.png",
+    Image: "/stashh.png",
     description:
       "Non-custodial savings for inflation-heavy economies. A smart-contract neobank that lets you save USDC in a flexible or time-locked vault and send peer-to-peer, all from your own wallet.",
     technology: ["Next.js", "Typescript", "Tailwind", "SCSS", "Solidity"]
@@ -88,13 +87,23 @@ const projects = [
     project: "Propsphere",
     demo: "https://prop-sphere.vercel.app",
     repo: "https://github.com/Halima-1/prop-sphere.git",
-    Image: "/taskpad image.png",
+    Image: "/props.png",
     description:
-      "This is a property management dApp built on Lisk sepolia testnet. User can upload images of their property and list for buyers.",
+      "A property management dApp built on Lisk sepolia testnet. User can upload images of their property and list for buyers.",
     technology: ["React.js", "Typescript", "SCSS"]
   },
   {
     id: 4,
+    project: "Planify",
+    demo: "https://planiffyy.netlify.app/",
+    repo: "https://github.com/Halima-1/Planify.git",
+    Image: "/planiffy.png",
+    description:
+      "Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events.",
+    technology: ["React.js", "Firebase", "SASS"]
+  },
+  {
+    id: 5,
     project: "Multi Step Form",
     demo: "https://multii-form.netlify.app/",
     repo: "",
@@ -103,21 +112,43 @@ const projects = [
       "A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic validation.",
     technology: ["React.js", "SASS"]
   },
-  {
-    id: 5,
-    project: "Pulse AI",
-    demo: "https://planiffyy.netlify.app/",
-    repo: "https://github.com/Halima-1/pulse-ai.git",
-    Image: "/planiffy.png",
-    description: "AI-guided, wallet-native risk management protocol for Solana.",
-    technology: ["React.js", "Tailwind", "Supabase", "CSS"]
-  }
+
 ];
 
 const rolesData = [
   { text: "Frontend Developer", link: null },
   { text: "Blockchain Fullstack Developer", link: null },
   { text: "Web3 Technical Writer", link: null }
+];
+
+const educationData = [
+  {
+    id: 1,
+    category: "Degree",
+    school: "Federal University of Technology, Minna",
+    location: "Minna, Nigeria",
+    program: "Industrial Chemistry",
+    summary:
+      "Graduated with a strong Second Class Upper (2:1), building a rigorous foundation in research, analysis, and structured problem solving."
+  },
+  {
+    id: 2,
+    category: "Professional Training",
+    school: "Web3Bridge",
+    location: "Nigeria",
+    program: "Advanced Web2 Development and Blockchain Development",
+    summary:
+      "Deepened my engineering skills across modern frontend architecture, product thinking, and blockchain development workflows."
+  },
+  {
+    id: 3,
+    category: "Specialized Training",
+    school: "OIC Hub Coding School",
+    location: "Osogbo, Nigeria",
+    program: "Frontend Development",
+    summary:
+      "Strengthened my UI implementation skills with hands-on training in responsive layouts, accessibility, and polished user experiences."
+  }
 ];
 
 const imagesData = ["/halima1.jpeg", "/halima2.jpeg", "/halima3.jpeg"];
@@ -260,7 +291,9 @@ function Home() {
             </motion.h1>
             <motion.p variants={fadeInUp}>
               I am a Frontend Developer skilled in building visually stunning, responsive,
-              and robust web applications. I transform ideas into seamless digital realities.
+              and robust web applications, while also growing as a blockchain developer
+              building on EVM with a strong interest in DeFi and crafting beautiful,
+              user-friendly UIs for dApps.
             </motion.p>
             <motion.div className="hero-actions" variants={fadeInUp}>
               <a href="#projects" className="btn-primary">
@@ -298,8 +331,10 @@ function Home() {
               variants={staggerContainer}
             >
               <motion.p variants={fadeInUp}>
-                I bridge the gap between design and engineering, ensuring every application
-                feels polished and performant. Here is a brief look at my primary roles:
+                I am a frontend developer who loves turning ideas into polished,
+                responsive, and user-friendly products. I also build as a blockchain
+                developer on EVM, with a growing interest in DeFi and seamless dApp
+                experiences. Here is a brief look at my primary roles:
               </motion.p>
 
               <div className="role-cycler-container">
@@ -329,9 +364,10 @@ function Home() {
               </div>
 
               <motion.p variants={fadeInUp}>
-                When I&apos;m not coding, I&apos;m constantly learning about new paradigms in
-                web development, exploring smart contracts, and fine-tuning my design
-                aesthetics.
+                I enjoy working at the intersection of product design and engineering,
+                making sure the interfaces I build are not just functional, but intuitive
+                and visually thoughtful. I&apos;m constantly learning, exploring smart
+                contracts, and refining how great Web2 and Web3 experiences should feel.
               </motion.p>
 
               <motion.div className="social-links about-social-links" variants={fadeInUp}>
@@ -403,6 +439,52 @@ function Home() {
           </div>
         </section>
 
+        <section id="education" className="section container education-section">
+          <motion.div
+            className="education-shell"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={staggerContainer}
+          >
+            <motion.div className="education-heading" variants={fadeInUp}>
+              <span className="education-kicker">Education</span>
+              <h2 className="section-title education-title">Learning Journey</h2>
+              <p>
+                My path blends science, product-minded web development, and blockchain
+                training, giving me a thoughtful approach to building digital experiences.
+              </p>
+            </motion.div>
+
+            <motion.div className="education-timeline" variants={staggerContainer}>
+              {educationData.map((item, index) => (
+                <motion.article
+                  key={item.id}
+                  className="education-card"
+                  variants={fadeInUp}
+                  whileHover={{ y: -8, scale: 1.01 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                >
+                  <div className="education-orb" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+
+                  <div className="education-card-content">
+                    <div className="education-meta">
+                      <span className="education-tag">{item.category}</span>
+                      <span className="education-location">{item.location}</span>
+                    </div>
+
+                    <h3>{item.school}</h3>
+                    <h4>{item.program}</h4>
+                    <p>{item.summary}</p>
+                  </div>
+                </motion.article>
+              ))}
+            </motion.div>
+          </motion.div>
+        </section>
+
         <section id="projects" className="section container">
           <motion.h2
             className="section-title"
@@ -411,7 +493,7 @@ function Home() {
             viewport={{ once: true, amount: 0.2 }}
             variants={fadeInUp}
           >
-            Recent Works
+            Some recent projects
           </motion.h2>
 
           <motion.div
