@@ -66,7 +66,7 @@ const projects = [
   {
     id: 1,
     project: "Pulse AI",
-    demo: "https://planiffyy.netlify.app/",
+    demo: "https://pulse-ai-green-ten.vercel.app/",
     repo: "https://github.com/Halima-1/pulse-ai.git",
     Image: "/pulse.png",
     description: "AI-guided, wallet-native risk management protocol for Solana with real-time portfolio and token risk analysis in the frontend",
