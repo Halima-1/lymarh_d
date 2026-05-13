@@ -1,0 +1,28 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7729c0" stop-opacity="0.35">
+        <animate attributeName="stop-opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0617"/>
+
+  <!-- Animated glow -->
+  <circle cx="900" cy="150" r="200" fill="url(#pulse)"/>
+
+  <circle cx="250" cy="500" r="260" fill="url(#pulse)"/>
+
+  <!-- Text -->
+  <text x="120" y="310" font-size="78" fill="#faf5ff" font-family="Poppins" font-weight="700">
+    Halima Dahunsi
+  </text>
+
+  <text x="120" y="390" font-size="38" fill="rgba(250,245,255,0.72)">
+Frontend/Blockchain Developer  </text>
+
+  <text x="120" y="455" font-size="28" fill="rgba(250,245,255,0.85)">
+Building clean, user-focused web experiences and growing as a blockchain developer building on EVM.  </text>
+</svg>
