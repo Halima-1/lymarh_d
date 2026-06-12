@@ -20,7 +20,8 @@ import {
   SiSolidity,
   SiSupabase,
   SiTailwindcss,
-  SiTypescript
+  SiTypescript,
+  SiFramer
 } from "react-icons/si";
 import { GrClose } from "react-icons/gr";
 import "./styles/index.scss";
@@ -46,7 +47,8 @@ const techRegistry = {
   "Tailwind CSS": { label: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   Tailwind: { label: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   CSS: { label: "CSS3", icon: SiCss3, color: "#1572B6" },
-  Foundry: { label: "Foundry", icon: FoundryMark, color: "#A855F7" }
+  Foundry: { label: "Foundry", icon: FoundryMark, color: "#A855F7" },
+  "Framer Motion": { label: "Framer Motion", icon: SiFramer, color: "#0055FF" }
 };
 
 const skills = [
@@ -65,6 +67,26 @@ const skills = [
 const projects = [
   {
     id: 1,
+    project: "n-NGN",
+    demo: "https://n-ngn.vercel.app/",
+    repo: "https://github.com/thegreatfeez/nNGN",
+    Image: "/nngn.jpeg",
+    description:
+      "A decentralized, over-collateralized stablecoin pegged 1:1 to the Nigerian Naira, built on Arbitrum. Every nNGN is backed by real ETH locked in a transparent smart contract.",
+    technology: ["React.js", "Typescript", "Tailwind CSS", "Framer Motion"]
+  },
+  {
+    id: 2,
+    project: "Aegis Protocol",
+    demo: "https://aegis-protocol-xi.vercel.app/",
+    repo: "https://github.com/thegreatfeez/Aegis",
+    Image: "/Aegis.jpeg",
+    description:
+      "Aegis is an on-chain AI portfolio advisory protocol built on Mantle. It reads a user's live USDY and mETH balances directly from the blockchain, fetches real-time yield rates, and feeds the complete picture into a large language model calibrated to the user's personal risk profile.",
+    technology: ["React.js", "Typescript", "Tailwind CSS"]
+  },
+  {
+    id: 3,
     project: "Pulse AI",
     demo: "https://pulse-ai-green-ten.vercel.app/",
     repo: "https://github.com/Halima-1/pulse-ai.git",
@@ -73,7 +95,7 @@ const projects = [
     technology: ["React.js", "Tailwind", "Supabase", "CSS"]
   },
   {
-    id: 2,
+    id: 4,
     project: "Stash",
     demo: "https://stashh-mvp.vercel.app",
     repo: "https://github.com/Halima-1/stash.git",
@@ -82,18 +104,18 @@ const projects = [
       "Non-custodial savings for inflation-heavy economies. A smart-contract neobank that lets you save USDC in a flexible or time-locked vault and send peer-to-peer, all from your own wallet.",
     technology: ["Next.js", "Typescript", "Tailwind", "SCSS", "Solidity"]
   },
+  // {
+  //   id: 4,
+  //   project: "Propsphere",
+  //   demo: "https://prop-sphere.vercel.app",
+  //   repo: "https://github.com/Halima-1/prop-sphere.git",
+  //   Image: "/props.png",
+  //   description:
+  //     "A property management dApp built on Lisk sepolia testnet. User can upload images of their property and list for buyers.",
+  //   technology: ["React.js", "Typescript", "SCSS"]
+  // },
   {
-    id: 3,
-    project: "Propsphere",
-    demo: "https://prop-sphere.vercel.app",
-    repo: "https://github.com/Halima-1/prop-sphere.git",
-    Image: "/props.png",
-    description:
-      "A property management dApp built on Lisk sepolia testnet. User can upload images of their property and list for buyers.",
-    technology: ["React.js", "Typescript", "SCSS"]
-  },
-  {
-    id: 4,
+    id: 5,
     project: "Planify",
     demo: "https://planiffyy.netlify.app/",
     repo: "https://github.com/Halima-1/Planify.git",
@@ -101,17 +123,7 @@ const projects = [
     description:
       "Planify is a web-based event management platform built with React, Firebase, and Google Maps API, designed to help users easily create, view, and manage events.",
     technology: ["React.js", "Firebase", "SASS"]
-  },
-  {
-    id: 5,
-    project: "Multi Step Form",
-    demo: "https://multii-form.netlify.app/",
-    repo: "",
-    Image: "/multi-form.png",
-    description:
-      "A sleek and interactive multi-step form built to enhance user experience with step-by-step navigation, add-ons selection, and dynamic validation.",
-    technology: ["React.js", "SASS"]
-  },
+  }
 
 ];
 
@@ -300,6 +312,14 @@ function Home() {
                 View My Work
               </a>
               <a
+                href="https://github.com/Halima-1"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-secondary"
+              >
+                Github
+              </a>
+              <a
                 href="https://docs.google.com/document/d/1VEmdD9m2WNQHkEEZldhDPXPwOlGJtoxiwr0hVwucgSM/edit"
                 target="_blank"
                 rel="noreferrer"
@@ -396,6 +416,7 @@ function Home() {
                 <div className="skills-grid">
                   {skills.map((skill, index) => {
                     const tech = techRegistry[skill];
+                    if (!tech) return null;
                     const TechIcon = tech.icon;
 
                     return (
@@ -511,6 +532,7 @@ function Home() {
                   <div className="project-tech">
                     {project.technology.map((tech, index) => {
                       const techItem = techRegistry[tech];
+                      if (!techItem) return null;
                       const TechIcon = techItem.icon;
 
                       return (
